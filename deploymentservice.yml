@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment
+  name: node-deployment
   labels:
-    app: nodeapp
+    app: node
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapp
+      app: node
   template:
     metadata:
       labels:
-        app: nodeapp 
+        app: node 
     spec:
       containers:
-      - name: nodeserver
-        image: nodeapp:latest
+      - name: nodecontainer
+        image: node:latest
         ports:
         - containerPort: 3000
         
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: node-service
 spec:
   selector:
-    app: nodeapp 
+    app: node 
   type: LoadBalancer
   ports:
   - protocol: TCP
